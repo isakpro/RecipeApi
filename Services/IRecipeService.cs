@@ -1,8 +1,15 @@
-﻿using System;
+﻿using RecipeApi.Models;
+using RecipeApi.Models.DTOs;
 
-public class Class1
+namespace RecipeApi.Services;
+
+public interface IRecipeService
 {
-	public Class1()
-	{
-	}
+    IEnumerable<Recipe> GetAllRecipes();
+    Recipe? GetRecipeById(int id);
+    IEnumerable<Recipe> SearchRecipes(string term);
+    IEnumerable<Recipe> GetRecipesByDifficulty(string difficulty);
+    Recipe CreateRecipe(CreateRecipeDto dto);
+    Recipe? UpdateRecipe(int id, UpdateRecipeDto dto);
+    bool DeleteRecipe(int id);
 }
