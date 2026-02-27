@@ -1,6 +1,70 @@
 @RecipeApi_HostAddress = http://localhost:5260
 
-GET {{RecipeApi_HostAddress}}/weatherforecast/
+### Hämta alla recept
+GET {{RecipeApi_HostAddress}}/api/recipes
 Accept: application/json
 
-###
+### Hämta recept med ID
+GET {{RecipeApi_HostAddress}}/api/recipes/1
+Accept: application/json
+
+### Sök recept
+GET {{RecipeApi_HostAddress}}/api/recipes/search?q=pannkakor
+Accept: application/json
+
+### Filtrera på svårighetsgrad
+GET {{RecipeApi_HostAddress}}/api/recipes/difficulty/Easy
+Accept: application/json
+
+### Skapa nytt recept
+POST {{RecipeApi_HostAddress}}/api/recipes
+Content-Type: application/json
+
+{
+  "name": "Pannkakor",
+  "description": "Klassiska svenska pannkakor",
+  "prepTimeMinutes": 10,
+  "cookTimeMinutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "ingredients": [
+    { "name": "Mjöl", "quantity": 3, "unit": "dl" },
+    { "name": "Mjölk", "quantity": 6, "unit": "dl" },
+    { "name": "Ägg", "quantity": 3, "unit": "st" },
+    { "name": "Salt", "quantity": 0.5, "unit": "tsk" }
+  ],
+  "instructions": [
+    "Vispa ihop mjöl, mjölk och ägg till en slät smet",
+    "Låt vila 30 minuter",
+    "Stek i smör i het stekpanna"
+  ]
+}
+
+### Uppdatera recept
+PUT {{RecipeApi_HostAddress}}/api/recipes/1
+Content-Type: application/json
+
+{
+  "name": "Pannkakor Deluxe",
+  "description": "Uppgraderade pannkakor med vanilj",
+  "prepTimeMinutes": 15,
+  "cookTimeMinutes": 20,
+  "servings": 4,
+  "difficulty": "Easy",
+  "ingredients": [
+    { "name": "Mjöl", "quantity": 3, "unit": "dl" },
+    { "name": "Mjölk", "quantity": 6, "unit": "dl" },
+    { "name": "Ägg", "quantity": 3, "unit": "st" },
+    { "name": "Salt", "quantity": 0.5, "unit": "tsk" },
+    { "name": "Vaniljsocker", "quantity": 1, "unit": "tsk" }
+  ],
+  "instructions": [
+    "Vispa ihop mjöl, mjölk, ägg och vaniljsocker till en slät smet",
+    "Låt vila 30 minuter",
+    "Stek i smör i het stekpanna"
+  ]
+}
+
+### Ta bort recept
+DELETE {{RecipeApi_HostAddress}}/api/recipes/1
+
