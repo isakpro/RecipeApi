@@ -1,8 +1,14 @@
-﻿using System;
+﻿using RecipeApi.Models;
 
-public class Class1
+namespace RecipeApi.Repositories;
+
+public interface IRecipeRepository
 {
-	public Class1()
-	{
-	}
+    IEnumerable<Recipe> GetAll();
+    Recipe? GetById(int id);
+    IEnumerable<Recipe> Search(string term);
+    IEnumerable<Recipe> GetByDifficulty(string difficulty);
+    Recipe Add(Recipe recipe);
+    Recipe? Update(int id, Recipe recipe);
+    bool Delete(int id);
 }
